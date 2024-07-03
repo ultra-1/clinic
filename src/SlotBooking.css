@@ -1,0 +1,9 @@
+.slot {
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  .slot.booked {
+    background-color: lightblue; /* Background color for booked slots */
+  }

@@ -1,0 +1,54 @@
+.calendar-container {
+    max-width: 600px; /* Adjust as needed */
+    margin: auto;
+  }
+  
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .weekday {
+    text-align: center; /* Center align day names */
+  }
+  
+  .calendar-date {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: white; /* Default background color */
+  }
+  
+  .calendar-date.inactive {
+    background-color: lightgray; /* Background color for inactive dates */
+    cursor: default;
+  }
+  
+  .calendar-date.unavailable {
+    background-color: lightblue; /* Background color when all slots are booked */
+  }
+  
+  .calendar-date.clickable:hover {
+    background-color: #f0f0f0; /* Hover color for clickable dates */
+  }
+  
