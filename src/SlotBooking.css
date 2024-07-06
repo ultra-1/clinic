@@ -1,9 +1,39 @@
 .slot {
-    padding: 10px;
-    margin-bottom: 5px;
-    cursor: pointer;
-  }
-  
-  .slot.booked {
-    background-color: lightblue; /* Background color for booked slots */
-  }
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slot.available {
+  background-color: #ff8800;
+  color: #fff;
+}
+
+.slot.booked {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.slot:hover {
+  background-color: #ff6600;
+}
+
+button {
+  background-color: #ff8800;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff6600;
+}
+
+h2 {
+  color: #ff8800;
+}

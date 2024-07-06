@@ -1,27 +1,32 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import AboutUs from './AboutUs';
 import BookSlots from './BookSlots';
+import ContactUs from './ContactUs';
 import './App.css';
 
 function App() {
-  // Get current path using React Router's useLocation hook
-  const { pathname } = window.location;
+  const scrollToSection = (id) => {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <Router>
       <div className="App">
         <header>
-          <h1>Jeevan Project</h1>
+          <nav>
+            <button onClick={() => scrollToSection('about-us')}>About</button>
+            <button onClick={() => scrollToSection('contact-us')}>Contact</button>
+          </nav>
         </header>
         <main>
-          <Routes>
-            {/* Route for /book-slots */}
-            <Route path="/book-slots" element={<BookSlots />}/>
-            {/* Default route (exact path /) */}
-            <Route exact path="/" element={<AboutUs />} />
-            {/* Handle unknown routes */}
-          </Routes>
+          <section id="about-us">
+            <AboutUs />
+          </section>
+          
+          <section id="contact-us">
+            <ContactUs />
+          </section>
         </main>
       </div>
     </Router>

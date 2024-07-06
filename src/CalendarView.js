@@ -1,3 +1,5 @@
+// CalendarView.js
+
 import React, { useState } from 'react';
 import './Calendar.css'; // Assuming this is your stylesheet
 
@@ -36,39 +38,38 @@ function CalendarView({ slots, setSelectedDate }) {
     const todayDate = currentDate.getDate();
     const todayMonth = currentDate.getMonth();
     const todayYear = currentDate.getFullYear();
-
+  
     // Calculate maximum allowed date
     const maxAllowedDate = new Date();
     maxAllowedDate.setMonth(maxAllowedDate.getMonth() + 2);
-
+  
     // Calculate days in previous month
     const prevMonthDays = daysInMonth(displayedMonth === 0 ? 11 : displayedMonth - 1, displayedMonth === 0 ? displayedYear - 1 : displayedYear);
-
+  
     // Calculate starting day index (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
     const startDayIndex = firstDayOfMonth(displayedMonth, displayedYear);
-
+  
     // Add empty slots for the days from previous month
     for (let i = 0; i < startDayIndex; i++) {
-      const date = prevMonthDays - (startDayIndex - i - 1);
       calendarDates.push(
         <div
-          key={`prev-${i}`}
+          key={`empty-${i}`}
           className="calendar-date inactive"
         >
-          {date}
+          {/* You can leave this empty or add a placeholder */}
         </div>
       );
     }
-
+  
     // Add the actual dates of the current month
     for (let date = 1; date <= totalDaysInMonth; date++) {
       const dateSlots = slots.find(slot => slot.date === date && slot.month === displayedMonth + 1 && slot.year === displayedYear);
       const allSlotsBooked = dateSlots && dateSlots.slots.every(slot => slot.bookingsCount >= slot.occupancyLimit);
       const calendarDateClass = allSlotsBooked ? 'unavailable' : '';
-
+  
       // Determine if the date is clickable
-      const isClickable = new Date(displayedYear, displayedMonth, date) >= currentDate && new Date(displayedYear, displayedMonth, date) <= maxAllowedDate;
-
+      const isClickable = new Date(displayedYear, displayedMonth, date) >= new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) && new Date(displayedYear, displayedMonth, date) <= maxAllowedDate;
+  
       calendarDates.push(
         <div
           key={date}
@@ -81,8 +82,8 @@ function CalendarView({ slots, setSelectedDate }) {
     }
     return calendarDates;
   };
-
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   return (
     <div className="calendar-container">

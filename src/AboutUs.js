@@ -1,12 +1,16 @@
 import React from 'react';
+import doctorImage from './images/forestRobots.jpeg';
+import './AboutUs.css';
+
 
 function AboutUs() {
   return (
-    <div>
-      <p>Welcome to our clinic. You can book appointment with our doctor.</p>
-      <img src="path-to-your-image.jpg" alt='Image'/>
-      <hr/>
-      <a href="/book-slots">Book a Slot</a>
+    <div className="about-us">
+      <h2>Jeevan Reddy</h2>
+      <div className="images-container">
+        
+      </div>
+      <p>Welcome to my blog! lets find out what this is about.</p>
     </div>
   );
 }
